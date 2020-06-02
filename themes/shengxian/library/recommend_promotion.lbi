@@ -1,0 +1,42 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $promotion_goods} -->
+<div class="product-new">
+      <div class="fresh-cont">
+
+<div class="madden-today recommend-pro">
+	<h2>
+		<dl class="clearfix">
+			<dt class="fl">每日特价</dt>
+			<dd class="fl">
+				<a target="_blank">
+				<img data-order="100" src="images/mrtj.jpg" height="0" width="0" border="0">
+				</a>
+			</dd>
+			<dd class="fr">
+			</dd>
+		</dl>
+	</h2>
+	<div class="madden-pro">
+		<ul class="clearfix">
+		<!--{foreach from=$promotion_goods item=goods}-->	
+			<li>
+				<a href="{$goods.url}" title="{$goods.name|escape:html}" class="imgChange" target="_blank">
+					<img src="{$goods.thumb}" title="{$goods.name|escape:html}" alt="{$goods.name|escape:html}">
+				</a>
+				<div class="inforBox">
+					<p class="txtBt"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.name|escape:html}</a></p>
+					<p class="txtInfor"><a title="{$goods.url}">{$goods.brief}</a></p>
+					<div class="buy-btn ">
+						<span>促销价:</span><span class="tj"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span>
+						<a target="_blank" href="{$goods.url}"> 去看看</a>
+					</div>
+				</div>
+			</li>
+		<!--{/foreach}-->
+		</ul>
+	</div>
+</div>
+
+      </div>
+</div>
+<!-- {/if} -->

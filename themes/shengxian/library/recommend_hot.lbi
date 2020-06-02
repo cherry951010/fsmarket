@@ -1,0 +1,21 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $hot_goods} -->
+	<div class="madden-pro">
+		<ul class="clearfix">
+		<!--{foreach from=$hot_goods item=goods}-->	
+			<li>
+				<a href="{$goods.url}" title="{$goods.name|escape:html}" class="imgChange" target="_blank">
+					<img src="{$goods.thumb}" title="{$goods.name|escape:html}" alt="{$goods.name|escape:html}">
+				</a>
+				<div class="inforBox">
+					<p class="txtBt"><a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.name|escape:html}</a></p>
+					<div class="buy-btn ">
+						<span class="tj"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></span>
+						<a target="_blank" href="{$goods.url}"> 去看看</a>
+					</div>
+				</div>
+			</li>
+		<!--{/foreach}-->
+		</ul>
+	</div>
+<!-- {/if} -->

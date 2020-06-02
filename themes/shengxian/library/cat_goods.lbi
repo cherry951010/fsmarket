@@ -1,0 +1,77 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<?php
+$sortnum=$GLOBALS['smarty']->_var['sortnum'];
+if($sortnum=='')
+{
+ $sortnum==0;
+}
+$sortnum=$sortnum+1;
+$GLOBALS['smarty']->assign('sortnum',$sortnum);
+$catid=$GLOBALS['smarty']->_var['goods_cat']['id'];
+$catname=$GLOBALS['smarty']->_var['goods_cat']['name'];
+?>
+<div class="cn-laytit">
+	<div class="title">
+		<h3 class="floor_h{$sortnum}">{$sortnum}F {$goods_cat.name}</h3>
+	</div>
+	<a class="cat_goods_more cat_goods_more_{$sortnum}" href="{$goods_cat.url}">更多</a>
+	<div class="link link{$sortnum}">
+		<!--{foreach from=get_child_tree($catid) item=child_tree name=child_tree}-->
+			<!-- {if $smarty.foreach.child_tree.index<12}--> 
+				<a href="{$child_tree.url}" title="{$child_tree.name}" target="_blank" {if $child_tree.is_show_hot == 1}class="hot"{/if}>{$child_tree.name}</a>
+			<!--{/if}-->
+		<!--{/foreach}-->
+	</div>
+</div>
+<div class="cn-fruit cn-fruit-{$sortnum}">
+
+  <div class="banner">
+    <?php
+	$GLOBALS['smarty']->assign('index_image1',get_advlist('首页'.$sortnum.'F分类商品左侧广告', 1));
+    ?>
+    {foreach from=$index_image1 item=ad name=index_image1}
+		<div class="ban">
+		  <a href="{$ad.url}" target="_blank"><img data-original="{$ad.image}" src="images/spacer.gif" class="loading" height="450" width="200"></a>
+		</div>
+    {/foreach}
+  </div>
+  <div class="goods">
+    <ul>
+    <!--{foreach from=$cat_goods item=goods name=goods}-->
+      <li id="li_{$goods.id}">
+        <div class="item">
+          <div class="img">
+            <a href="{$goods.url}">
+              <img data-original="{$goods.thumb}" src="images/spacer.gif" class="loading pic_img_{$goods.id}" height="150" width="150"></a>
+          </div>
+          <div class="tit">
+            <a href="{$goods.url}">{$goods.name|truncate:12:"...":true}</a></div>
+          <div class="btns">
+            <div class="pri j_comPrice">
+              <b class="j_sellPrice"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></b></div>
+            <a class="addtocart j_addToCartAysn" href="javascript:addToCart({$goods.id})">加入购物车</a></div>
+        </div>
+      </li>
+    <!--{/foreach}-->
+    </ul>
+  </div>
+  <div class="banner">
+    <?php
+	$GLOBALS['smarty']->assign('index_image2',get_advlist('首页'.$sortnum.'F分类商品右侧广告', 1));
+    ?>
+    {foreach from=$index_image2 item=ad name=index_image2}
+		<div class="ban">
+		  <a href="{$ad.url}" target="_blank"><img data-original="{$ad.image}" src="images/spacer.gif" class="loading" height="450" width="200"></a>
+		</div>
+    {/foreach}
+  </div>
+</div>
+
+    <?php
+	$GLOBALS['smarty']->assign('index_image1',get_advlist('首页'.$sortnum.'F分类商品底部广告', 1));
+    ?>
+    {foreach from=$index_image1 item=ad name=index_image1}
+		<div class="cat_bottom_ad">
+		  <a href="{$ad.url}" target="_blank"><img data-original="{$ad.image}" src="images/spacer.gif" class="loading"></a>
+		</div>
+    {/foreach}
